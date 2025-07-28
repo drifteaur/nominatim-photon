@@ -2,7 +2,7 @@
 services:
   nominatim:
     container_name: nominatim
-    image: mediagis/nominatim:4.4
+    image: mediagis/nominatim:5.1
     restart: always
     ports:
       - 8081:8080
