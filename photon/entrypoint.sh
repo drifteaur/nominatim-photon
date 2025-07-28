@@ -1,13 +1,13 @@
 #!/bin/bash
 
-# Create elasticsearch index
-if [ ! -d "/photon/photon_data/elasticsearch" ]; then
-	echo "Creating search index"
+# Create search index (supports both Elasticsearch and OpenSearch)
+if [ ! -d "/photon/photon_data/elasticsearch" ] && [ ! -d "/photon/photon_data/opensearch" ] && [ ! -d "/photon/photon_data/node_1" ]; then
+	echo "Creating search index with OpenSearch"
 	java -jar photon.jar -nominatim-import -host nominatim -port 5432 -database nominatim -user nominatim -password terkepeszet -languages hu
 fi
 
-# Start photon if elastic index exists
-if [ -d "/photon/photon_data/elasticsearch" ]; then
+# Start photon if search index exists (Elasticsearch, OpenSearch, or node_1)
+if [ -d "/photon/photon_data/elasticsearch" ] || [ -d "/photon/photon_data/opensearch" ] || [ -d "/photon/photon_data/node_1" ]; then
 	echo "Starting photon"
 	java -jar photon.jar -host nominatim -port 5432 -database nominatim -user nominatim -password terkepeszet
 
