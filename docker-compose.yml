@@ -11,7 +11,7 @@ services:
       REPLICATION_URL: https://download.geofabrik.de/europe/hungary-updates/
       NOMINATIM_PASSWORD: terkepeszet
     volumes:
-      - nominatim-data:/var/lib/postgresql/14/main
+      - nominatim-data:/var/lib/postgresql/16/main
     shm_size: 1gb
   photon:
     build:
